@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
-        android:text="Daily Planner"
+        android:text="@string/daily_planner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:text="To Dos"
+        android:text="@string/to_dos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:text="Notes"
+        android:text="@string/notes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +43,7 @@
 
     <ImageView
         android:id="@+id/imageView"
+        android:contentDescription="@string/menu_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,14 +56,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menu" />
 
-
-    <fragment
-        android:layout_width="420dp"
-        android:layout_height="600dp"
-        android:layout_marginTop="32dp"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="409dp"
+        android:layout_height="622dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
