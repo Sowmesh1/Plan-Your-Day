@@ -5,4 +5,5 @@
     <string name="to_dos">To Dos</string>
     <string name="notes">Notes</string>
     <string name="menu_icon">Menu</string>
+    <string name="calender_icon">calender</string>
 </resources>

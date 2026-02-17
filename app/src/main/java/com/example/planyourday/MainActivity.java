@@ -1,6 +1,7 @@
 package com.example.planyourday;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
