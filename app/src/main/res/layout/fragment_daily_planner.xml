@@ -13,7 +13,9 @@
         android:layout_width="258dp"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="46dp"
         android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/plans"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,20 +24,23 @@
         android:layout_width="50dp"
         android:layout_height="46dp"
         android:layout_marginStart="84dp"
+        android:layout_marginEnd="19dp"
         android:contentDescription="@string/calender_icon"
         android:src="@drawable/calender"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/title_day"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/plans"
-        android:layout_width="413dp"
-        android:layout_height="630dp"
+        android:layout_width="436dp"
+        android:layout_height="611dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="1dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_day" />
 

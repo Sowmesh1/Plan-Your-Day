@@ -28,7 +28,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHo
 
     @Override
     public int getItemCount() {
-        return 100;
+        return 10;
     }
 
     public static class PlanHolder extends RecyclerView.ViewHolder{
