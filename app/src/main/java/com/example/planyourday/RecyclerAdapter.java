@@ -1,0 +1,45 @@
+package com.example.planyourday;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHolder> {
+
+    int count=0;
+    @NonNull
+    @Override
+    public PlanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater =LayoutInflater.from(parent.getContext());
+        View view =layoutInflater.inflate(R.layout.row_plans,parent,false);
+        PlanHolder planHolder = new PlanHolder(view);
+        return planHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull PlanHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 100;
+    }
+
+    public static class PlanHolder extends RecyclerView.ViewHolder{
+        TextView timestamp,description;
+        CheckBox checkbox;
+        public PlanHolder(@NonNull View itemView) {
+
+            super(itemView);
+             timestamp =itemView.findViewById(R.id.timestamp);
+             description=itemView.findViewById(R.id.description);
+             checkbox =itemView.findViewById(R.id.checkbox);
+        }
+    }
+}
