@@ -1,14 +1,19 @@
 package com.example.planyourday;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -34,14 +39,11 @@ public class DailyPlannerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_daily_planner, container, false);
 
     }
@@ -52,6 +54,26 @@ public class DailyPlannerFragment extends Fragment {
         RecyclerView recyclerView=view.findViewById(R.id.plans);
         RecyclerAdapter recyclerAdapter=new RecyclerAdapter();
         recyclerView.setAdapter(recyclerAdapter);
+
+        ImageButton calenderButton=view.findViewById(R.id.calender_icon);
+        CalendarView cal = view.findViewById(R.id.calendar);
+        CardView cal_Card =view.findViewById(R.id.calCard);
+        cal_Card.setVisibility(View.GONE);
+        cal.setVisibility(View.GONE);
+        calenderButton.setOnClickListener(view1 -> {
+            if(cal.getVisibility()==View.VISIBLE){
+                cal.setVisibility(View.GONE);
+                cal_Card.setVisibility(View.GONE);
+            }
+            else{
+                cal.setVisibility(View.VISIBLE);
+                cal_Card.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+
     }
+
 
 }

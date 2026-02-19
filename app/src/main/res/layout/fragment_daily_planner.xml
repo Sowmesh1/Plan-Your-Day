@@ -19,18 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/calender_icon"
-        android:layout_width="50dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginEnd="19dp"
-        android:contentDescription="@string/calender_icon"
-        android:src="@drawable/calender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/title_day"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/plans"
         android:layout_width="436dp"
@@ -43,5 +31,41 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_day" />
+
+    <ImageButton
+        android:id="@+id/calender_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/calender_icon"
+        android:onClick="calClick"
+        android:src="@drawable/calender"
+        app:layout_constraintBottom_toTopOf="@+id/plans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title_day"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/calCard"
+        android:layout_width="291dp"
+        android:layout_height="291dp"
+        android:background="#E1A1E7"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159">
+
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="290dp"
+            android:layout_height="292dp"
+            android:visibility="visible" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
