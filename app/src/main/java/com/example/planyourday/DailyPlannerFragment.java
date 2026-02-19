@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -69,6 +70,17 @@ public class DailyPlannerFragment extends Fragment {
                 cal.setVisibility(View.VISIBLE);
                 cal_Card.setVisibility(View.VISIBLE);
             }
+        });
+
+        cal.setOnDateChangeListener((calendarView, year, month, dayOfMonth) -> {
+            Calendar selectedCal = Calendar.getInstance();
+            selectedCal.set(year,month,dayOfMonth);
+            SimpleDateFormat sdf =
+                    new SimpleDateFormat("MMMM dd,yyyy", Locale.getDefault());
+
+            String formattedDate = sdf.format(selectedCal.getTime());
+
+            title_day.setText(formattedDate);
         });
 
 
