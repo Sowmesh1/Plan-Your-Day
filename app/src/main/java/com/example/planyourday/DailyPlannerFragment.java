@@ -56,6 +56,7 @@ public class DailyPlannerFragment extends Fragment {
         RecyclerAdapter recyclerAdapter=new RecyclerAdapter();
         recyclerView.setAdapter(recyclerAdapter);
 
+
         ImageButton calenderButton=view.findViewById(R.id.calender_icon);
         CalendarView cal = view.findViewById(R.id.calendar);
         CardView cal_Card =view.findViewById(R.id.calCard);
@@ -83,9 +84,5 @@ public class DailyPlannerFragment extends Fragment {
             title_day.setText(formattedDate);
         });
 
-
-
     }
-
-
 }
