@@ -16,6 +16,8 @@ import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -84,5 +86,12 @@ public class DailyPlannerFragment extends Fragment {
             title_day.setText(formattedDate);
         });
 
+        FloatingActionButton addbtn=view.findViewById(R.id.add_button);
+        addbtn.setOnClickListener(v -> {
+            AddPlan addPlan=new AddPlan();
+            addPlan.show(getParentFragmentManager(),"Add Plan dialog");
+        });
+
     }
+
 }
