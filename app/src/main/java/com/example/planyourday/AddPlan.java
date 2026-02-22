@@ -12,7 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.planyourday.db.AppDatabase;
+import com.example.planyourday.db.Plans;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class AddPlan extends DialogFragment {
 
@@ -34,12 +40,25 @@ public class AddPlan extends DialogFragment {
         savebutton.setOnClickListener(v -> {
             String meridian= timeswitch.isChecked()?"PM":"AM";
             String time = timeInput.getText().toString()+meridian;
-            String task = taskDescription.getText().toString();
-            Log.d("plan",time + " " +task);
+            String description = taskDescription.getText().toString();
+            String date = showTodayDate();
+            Log.d("plan",date+" "+time + " " +description);
+            savePlan(date,time,description);
         });
     }
 
-    public void savePlan(){
+    public void savePlan(String date,String time,String description){
+        AppDatabase db =AppDatabase.getDbInstance(this.getActivity().getApplicationContext());
+        Plans plan = new Plans();
+        plan.date=date;
+        plan.time=time;
+        plan.description= description;
+        db.plansDao().insertPlan(plan);
+    }
 
+    private String showTodayDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd , yyyy", Locale.getDefault());
+        String formattedDate = sdf.format(new Date());
+        return formattedDate;
     }
 }
