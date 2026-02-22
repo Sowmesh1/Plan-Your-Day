@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "plans")
 public class Plans {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
      public String date;
      public String time;
      public String description;

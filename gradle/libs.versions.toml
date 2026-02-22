@@ -10,6 +10,7 @@ constraintlayout = "2.2.1"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
 roomRuntime = "2.8.4"
+room = "2.6.1"
 roomCompiler = "2.8.4"
 
 [libraries]
@@ -22,8 +23,8 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version = "annotation" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
