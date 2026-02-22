@@ -11,4 +11,21 @@ public class Plans {
      public String date;
      public String time;
      public String description;
+     public boolean completed;
+
+     public String getTime(){
+         return time;
+     }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
 }

@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.planyourday.RecyclerAdapter;
 
-@Database(entities = {Plans.class},version = 1)
+@Database(entities = {Plans.class},version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract PlansDao plansDao();
@@ -18,9 +18,11 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getDbInstance(Context context){
         if(INSTANCE==null){
                INSTANCE=Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class,"Plans Table")
+                       .fallbackToDestructiveMigration()
                        .allowMainThreadQueries()
                        .build();
         }
         return  INSTANCE;
     }
+
 }

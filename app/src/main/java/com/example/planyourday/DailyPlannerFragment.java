@@ -17,21 +17,28 @@ import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.planyourday.db.AppDatabase;
+import com.example.planyourday.db.Plans;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
 
 
 public class DailyPlannerFragment extends Fragment {
 
+    List<Plans> plansList;
+    RecyclerAdapter recyclerAdapter;
+
     public DailyPlannerFragment() {
         // Required empty public constructor
     }
-
 
     private String showTodayDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd , yyyy", Locale.getDefault());
@@ -43,6 +50,7 @@ public class DailyPlannerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        plansList = new ArrayList<>();
     }
 
     @Override
@@ -56,7 +64,9 @@ public class DailyPlannerFragment extends Fragment {
         TextView title_day = view.findViewById(R.id.title_day);
         title_day.setText(showTodayDate());
         RecyclerView recyclerView=view.findViewById(R.id.plans);
-        RecyclerAdapter recyclerAdapter=new RecyclerAdapter();
+        plansList.addAll(updatePlansList(plansList));
+         recyclerAdapter=new RecyclerAdapter(plansList);
+        recyclerAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recyclerAdapter);
 
 
@@ -93,8 +103,11 @@ public class DailyPlannerFragment extends Fragment {
             addPlan.show(getParentFragmentManager(),"Add Plan dialog");
         });
 
-
     }
 
+    public List<Plans> updatePlansList(List<Plans> plansList){
+        AppDatabase db =AppDatabase.getDbInstance(this.getActivity().getApplicationContext());
+        return db.plansDao().getAllPlans();
+    }
 
 }

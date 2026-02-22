@@ -3,6 +3,7 @@ package com.example.planyourday.db;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface PlansDao {
 
      @Insert
     void insertPlan(Plans plan);
+
+     @Update
+    void updatePlan(Plans plan);
 }

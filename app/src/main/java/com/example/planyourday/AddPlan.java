@@ -49,7 +49,7 @@ public class AddPlan extends DialogFragment {
 
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 dismiss();
-            }, 1000);
+            }, 500);
 
         });
     }
