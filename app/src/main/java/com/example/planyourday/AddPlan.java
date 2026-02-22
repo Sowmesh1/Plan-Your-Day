@@ -1,6 +1,8 @@
 package com.example.planyourday;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,11 @@ public class AddPlan extends DialogFragment {
             String date = showTodayDate();
             Log.d("plan",date+" "+time + " " +description);
             savePlan(date,time,description);
+
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                dismiss();
+            }, 1000);
+
         });
     }
 
