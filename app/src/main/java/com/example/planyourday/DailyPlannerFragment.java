@@ -64,9 +64,7 @@ public class DailyPlannerFragment extends Fragment {
         TextView title_day = view.findViewById(R.id.title_day);
         title_day.setText(showTodayDate());
         RecyclerView recyclerView=view.findViewById(R.id.plans);
-        plansList.addAll(updatePlansList(plansList));
          recyclerAdapter=new RecyclerAdapter(plansList);
-        recyclerAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recyclerAdapter);
 
 
@@ -104,10 +102,4 @@ public class DailyPlannerFragment extends Fragment {
         });
 
     }
-
-    public List<Plans> updatePlansList(List<Plans> plansList){
-        AppDatabase db =AppDatabase.getDbInstance(this.getActivity().getApplicationContext());
-        return db.plansDao().getAllPlans();
-    }
-
 }
