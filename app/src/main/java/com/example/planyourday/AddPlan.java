@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.planyourday.db.AppDatabase;
 import com.example.planyourday.db.Plans;
@@ -36,7 +37,7 @@ public class AddPlan extends DialogFragment {
         TextInputEditText taskDescription =view.findViewById(R.id.taskDescription);
         SwitchCompat timeswitch = view.findViewById(R.id.timeswitch);
 
-
+        PlansViewModel viewModel = new ViewModelProvider(requireActivity()).get(PlansViewModel.class);
 
         Button savebutton = view.findViewById(R.id.savebutton);
         savebutton.setOnClickListener(v -> {
@@ -45,7 +46,11 @@ public class AddPlan extends DialogFragment {
             String description = taskDescription.getText().toString();
             String date = showTodayDate();
             Log.d("plan",date+" "+time + " " +description);
-            savePlan(date,time,description);
+            Plans plan = new Plans();
+            plan.date=date;
+            plan.time=time;
+            plan.description= description;
+            viewModel.insert(plan);
 
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 dismiss();
@@ -53,16 +58,6 @@ public class AddPlan extends DialogFragment {
 
         });
     }
-
-    public void savePlan(String date,String time,String description){
-        AppDatabase db =AppDatabase.getDbInstance(this.getActivity().getApplicationContext());
-        Plans plan = new Plans();
-        plan.date=date;
-        plan.time=time;
-        plan.description= description;
-        db.plansDao().insertPlan(plan);
-    }
-
     private String showTodayDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd , yyyy", Locale.getDefault());
         String formattedDate = sdf.format(new Date());

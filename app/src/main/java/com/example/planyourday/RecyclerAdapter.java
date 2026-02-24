@@ -18,6 +18,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHo
 
     List<Plans> plansList;
 
+    public void setData(List<Plans> newPlans){
+        this.plansList=newPlans;
+        notifyDataSetChanged();
+    }
+
     public RecyclerAdapter(List<Plans> plansList) {
         this.plansList = plansList;
     }
