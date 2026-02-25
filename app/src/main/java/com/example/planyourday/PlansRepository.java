@@ -27,4 +27,8 @@ public class PlansRepository {
     public  void insertPlan(Plans plan){
         plansDao.insertPlan(plan);
     }
+
+    public void deletePlan(Plans plan){
+        plansDao.deletePlan(plan);
+    }
 }

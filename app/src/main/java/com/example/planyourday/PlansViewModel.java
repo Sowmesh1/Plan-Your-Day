@@ -19,10 +19,15 @@ public class PlansViewModel extends AndroidViewModel {
         repository= new PlansRepository(application);
         allPlans=repository.getAllPlans();
     }
+
     public LiveData<List<Plans>> getAllPlans(){
         return allPlans;
     }
     public void insert(Plans plan){
         repository.insertPlan(plan);
+    }
+
+    public void deletePlan(Plans plan){
+        repository.deletePlan(plan);
     }
 }

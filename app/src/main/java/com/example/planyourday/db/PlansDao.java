@@ -2,6 +2,7 @@ package com.example.planyourday.db;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -18,4 +19,7 @@ public interface PlansDao {
 
      @Update
     void updatePlan(Plans plan);
+
+     @Delete
+    void deletePlan(Plans plan);
 }

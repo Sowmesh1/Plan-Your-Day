@@ -65,7 +65,11 @@ public class DailyPlannerFragment extends Fragment {
         TextView title_day = view.findViewById(R.id.title_day);
         title_day.setText(showTodayDate());
         RecyclerView recyclerView=view.findViewById(R.id.plans);
-         recyclerAdapter=new RecyclerAdapter(plansList);
+        PlansViewModel viewModel =
+                new ViewModelProvider(this).get(PlansViewModel.class);
+         recyclerAdapter=new RecyclerAdapter(plansList,plan -> {
+             viewModel.deletePlan(plan);
+         });
         recyclerView.setAdapter(recyclerAdapter);
 
 
@@ -101,8 +105,6 @@ public class DailyPlannerFragment extends Fragment {
             AddPlan addPlan=new AddPlan();
             addPlan.show(getParentFragmentManager(),"Add Plan dialog");
         });
-
-        PlansViewModel viewModel =new ViewModelProvider(this).get(PlansViewModel.class);
             viewModel.getAllPlans().observe(getViewLifecycleOwner(),plans -> {
                 recyclerAdapter.setData(plans);
             });

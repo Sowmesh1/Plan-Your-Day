@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,10 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHolder> {
 
+    public interface OnDeleteClickListener{
+        void onDeleteClick(Plans plan);
+    }
+    private OnDeleteClickListener listener;
     List<Plans> plansList;
 
     public void setData(List<Plans> newPlans){
@@ -23,8 +28,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHo
         notifyDataSetChanged();
     }
 
-    public RecyclerAdapter(List<Plans> plansList) {
+    public RecyclerAdapter(List<Plans> plansList,OnDeleteClickListener listener) {
         this.plansList = plansList;
+        this.listener=listener;
     }
 
     int count=0;
@@ -52,6 +58,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHo
             AppDatabase db = AppDatabase.getDbInstance(buttonView.getContext());
             db.plansDao().updatePlan(currentPlan);
         });
+        holder.deleteButton.setOnClickListener(v -> {
+            listener.onDeleteClick(plansList.get(position));
+        });
 
     }
 
@@ -63,12 +72,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PlanHo
     public static class PlanHolder extends RecyclerView.ViewHolder{
         TextView timestamp,description;
         CheckBox checkbox;
+        ImageButton deleteButton;
         public PlanHolder(@NonNull View itemView) {
 
             super(itemView);
              timestamp =itemView.findViewById(R.id.timestamp);
              description=itemView.findViewById(R.id.description);
              checkbox =itemView.findViewById(R.id.checkbox);
+             deleteButton =itemView.findViewById(R.id.deleteButton);
         }
     }
 }
