@@ -32,5 +32,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+    }
+    public void TodosClick(View view){
+          TodosFragment todosFragment =new TodosFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,todosFragment).addToBackStack(null).commit();
+    }
+
+    public void NotesClick(View view){
+        NotesFragment notesFragment =new NotesFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,notesFragment).addToBackStack(null).commit();
+    }
+    public void PlansClick(View view){
+        DailyPlannerFragment dailyPlannerFragment = new DailyPlannerFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,dailyPlannerFragment).commit();
     }
 }
