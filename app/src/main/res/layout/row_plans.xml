@@ -11,10 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="72dp"
+        android:layout_marginEnd="337dp"
         android:layout_marginBottom="9dp"
         android:editable="false"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,12 +36,14 @@
         android:layout_width="283dp"
         android:layout_height="49dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="7dp"
         android:editable="false"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.333" />
@@ -56,5 +60,6 @@
         app:layout_constraintEnd_toStartOf="@+id/checkbox"
         app:layout_constraintStart_toEndOf="@+id/description"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>
